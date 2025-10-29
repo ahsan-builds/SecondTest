@@ -54,16 +54,13 @@
     <p>This page sends straight to FormSubmit. After you press submit, you’ll land on <code>thanks.html</code> if it’s
       present.</p>
 
-    <!-- IMPORTANT: action points to your FormSubmit email -->
-    <form action="https://formsubmit.co/nexusxperts01@gmail.com" method="POST">
-  <input type="hidden" name="_subject"  value="Activation — NexusXperts (Site A)" />
+   <form action="https://formsubmit.co/contact@nexusxperts.com" method="POST">
+  <input type="hidden" name="_subject"  value="Activation — NexusXperts (contact@)" />
   <input type="hidden" name="_template" value="table" />
   <input type="hidden" name="_captcha"  value="false" />
-  <!-- Yahan HAMESHA live page ka sahi URL dalain, localhost nahi -->
   <input type="hidden" name="_url"      value="https://nexusxperts.com/contact" />
   <input type="hidden" name="_next"     value="https://nexusxperts.com/thanks.html" />
-
-  <input required name="name" placeholder="Name" />
+  <input required name="name"  placeholder="Name" />
   <input required type="email" name="email" placeholder="you@example.com" />
   <textarea required name="message" placeholder="Message"></textarea>
   <button>Send</button>
