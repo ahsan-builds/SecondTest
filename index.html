@@ -54,17 +54,153 @@
     <p>This page sends straight to FormSubmit. After you press submit, you’ll land on <code>thanks.html</code> if it’s
       present.</p>
 
-   <form action="https://formsubmit.co/contact@nexusxperts.com" method="POST">
-  <input type="hidden" name="_subject"  value="Activation — NexusXperts (contact@)" />
+   <form action="https://formsubmit.co/contact@nexusxperts.com" method="POST" class="space-y-5 text-white" novalidate>
+  <!-- FormSubmit controls -->
+  <input type="hidden" name="_subject"  value="New Business Inquiry - nexusxperts.com" />
   <input type="hidden" name="_template" value="table" />
   <input type="hidden" name="_captcha"  value="false" />
   <input type="hidden" name="_url"      value="https://nexusxperts.com/contact" />
   <input type="hidden" name="_next"     value="https://nexusxperts.com/thanks.html" />
-  <input required name="name"  placeholder="Name" />
-  <input required type="email" name="email" placeholder="you@example.com" />
-  <textarea required name="message" placeholder="Message"></textarea>
-  <button>Send</button>
+  <!-- Optional second recipient to monitor delivery -->
+  <!-- <input type="hidden" name="_cc" value="ops@yourdomain.com" /> -->
+
+  <!-- Honeypot (leave blank; bots will fill) -->
+  <div class="hidden" aria-hidden="true">
+    <label for="_honey">Do not fill this out</label>
+    <input type="text" id="_honey" name="_honey" tabindex="-1" autocomplete="off" />
+  </div>
+
+  <!-- First + Last Name -->
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+    <div>
+      <label for="first_name" class="block text-sm mb-1 text-[#263d83] dark:text-white">
+        First Name <span class="text-red-600">*</span>
+      </label>
+      <input id="first_name" name="first_name" required type="text" placeholder="Enter first name"
+             autocomplete="given-name"
+             class="w-full h-12 px-4 bg-transparent border border-gray-300 dark:border-gray-600 placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#4966AE] rounded-xl" />
+    </div>
+    <div>
+      <label for="last_name" class="block text-sm mb-1 text-[#263d83] dark:text-white">
+        Last Name <span class="text-red-600">*</span>
+      </label>
+      <input id="last_name" name="last_name" required type="text" placeholder="Enter last name"
+             autocomplete="family-name"
+             class="w-full h-12 px-4 bg-transparent border border-gray-300 dark:border-gray-600 placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#4966AE] rounded-xl" />
+    </div>
+  </div>
+
+  <!-- Email -->
+  <div>
+    <label for="email" class="block text-sm mb-1 text-[#263d83] dark:text-white">
+      Email <span class="text-red-600">*</span>
+    </label>
+    <input id="email" name="email" required type="email" placeholder="someone@example.com"
+           autocomplete="email"
+           class="w-full h-12 px-4 bg-transparent border border-gray-300 dark:border-gray-600 placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#4966AE] rounded-xl" />
+  </div>
+
+  <!-- Phone -->
+  <div>
+    <label for="phone" class="block text-sm mb-1 text-[#263d83] dark:text-white">
+      Phone Number <span class="text-red-600">*</span>
+    </label>
+    <div class="flex gap-2">
+      <span class="h-12 flex items-center px-4 border border-gray-300 dark:border-gray-600 rounded-lg text-[#263d83] dark:text-white">+92</span>
+      <input id="phone" name="phone" required type="tel" placeholder="3001234567"
+             autocomplete="tel-national" inputmode="numeric" pattern="[0-9]{10,11}"
+             class="w-full h-12 px-4 bg-transparent border border-gray-300 dark:border-gray-600 placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#4966AE] rounded-xl" />
+    </div>
+    <p class="text-xs text-gray-500 mt-1">Pakistan (‫پاکستان‬‎)</p>
+  </div>
+
+  <!-- Budget + Company -->
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+    <div>
+      <label for="budget" class="block text-sm mb-1 text-[#263d83] dark:text-white">
+        Budget <span class="text-red-600">*</span>
+      </label>
+      <input id="budget" name="budget" required type="text" placeholder="Your Budget"
+             autocomplete="off"
+             class="w-full h-12 px-4 bg-transparent border border-gray-300 dark:border-gray-600 placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#4966AE] rounded-xl" />
+    </div>
+    <div>
+      <label for="company" class="block text-sm mb-1 text-[#263d83] dark:text-white">
+        Company Name <span class="text-red-600">*</span>
+      </label>
+      <input id="company" name="company" required type="text" placeholder="Your company name"
+             autocomplete="organization"
+             class="w-full h-12 px-4 bg-transparent border border-gray-300 dark:border-gray-600 placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#4966AE] rounded-xl" />
+    </div>
+  </div>
+
+  <!-- Domain + Region -->
+  <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+    <div>
+      <label for="domain" class="block text-sm mb-1 text-[#263d83] dark:text-white">
+        Company Domain / URL
+      </label>
+      <input id="domain" name="domain" type="url" placeholder="https://yourcompany.com"
+             inputmode="url" autocomplete="url"
+             class="w-full h-12 px-4 bg-transparent border border-gray-300 dark:border-gray-600 placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#4966AE] rounded-xl" />
+    </div>
+    <div>
+      <label for="region" class="block text-sm mb-1 text-[#263d83] dark:text-white">
+        Region <span class="text-red-600">*</span>
+      </label>
+      <select id="region" name="region" required
+              class="w-full h-12 px-4 bg-transparent border border-gray-300 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-[#4966AE] rounded-xl text-[#263d83] dark:text-white">
+        <option class="text-black" value="">Please Select</option>
+        <option class="text-[#263d83]" value="asia">Asia</option>
+        <option class="text-[#263d83]" value="europe">Europe</option>
+        <option class="text-[#263d83]" value="america">America</option>
+        <option class="text-[#263d83]" value="africa">Africa</option>
+        <option class="text-[#263d83]" value="australia">Australia</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- Services -->
+  <div>
+    <label for="services" class="block text-sm mb-1 text-[#263d83] dark:text-white">
+      Services you're looking for <span class="text-red-600">*</span>
+    </label>
+    <select id="services" name="services" required
+            class="w-full h-12 px-4 bg-transparent border border-gray-300 dark:border-gray-600 placeholder-[#263d83] dark:placeholder-[#263d83] focus:outline-none focus:ring-2 focus:ring-[#4966AE] rounded-xl text-[#263d83] dark:text-white">
+      <option class="text-black" value="">Select a service</option>
+      <option class="text-[#263d83]">Generative AI/Chatbot</option>
+      <option class="text-[#263d83]">AI & Machine Learning</option>
+      <option class="text-[#263d83]">Web Development</option>
+      <option class="text-[#263d83]">DevOps & Automation</option>
+      <option class="text-[#263d83]">App Design & Develop</option>
+      <option class="text-[#263d83]">Cybersecurity</option>
+      <option class="text-[#263d83]">Cloud Solutions</option>
+      <option class="text-[#263d83]">UI/UX Design</option>
+      <option class="text-[#263d83]">Automation Tools</option>
+      <option class="text-[#263d83]">Digital Marketing</option>
+    </select>
+  </div>
+
+  <!-- Project -->
+  <div>
+    <label for="project_details" class="block text-sm mb-1 text-[#263d83] dark:text-white">
+      Project Details <span class="text-red-600">*</span>
+    </label>
+    <textarea id="project_details" name="project_details" required rows="5" placeholder="Tell us about your project..."
+              class="w-full px-4 py-3 bg-transparent border border-gray-300 dark:border-gray-600 placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#4966AE] rounded-xl"></textarea>
+  </div>
+
+  <!-- Submit -->
+  <button type="submit" id="submitBtn"
+          class="flex items-center justify-center gap-2 bg-[#263d83] hover:bg-[#1d2f66] px-6 py-3 rounded-lg font-semibold shadow transition w-full sm:w-auto text-white">
+    <span>Send Message</span>
+    <i class="fa-solid fa-paper-plane" aria-hidden="true"></i>
+  </button>
+
+  <!-- Status message (kept for future use; no JS needed) -->
+  <p id="form-status" class="mt-4 text-center text-sm" aria-live="polite"></p>
 </form>
+
   </div>
 </body>
 
